@@ -31,9 +31,14 @@
                         {% endif %}
                     </div>
                     <div class="rental-status">
-                        {% if data.rental.status == 1 %}
+                        {% if data.rental.status == 'ongoing' %}
                             <span class="status-badge status-active">Active</span>
-                            <a href="{% url 'return_book' data.rental.id %}" class="btn btn-primary btn-small">Return Book</a>
+                            <form method="POST" action="{% url 'return_book' data.rental.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-small">Return Book</button>
+                            </form>
+                        {% elif data.rental.status == 'overdue' %}
+                            <span class="status-badge status-overdue">Overdue</span>
                         {% else %}
                             <span class="status-badge status-returned">Returned</span>
                         {% endif %}

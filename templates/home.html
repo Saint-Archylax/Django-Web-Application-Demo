@@ -15,7 +15,7 @@
                 <div class="book-card">
                     <div class="book-cover">
                         {% if book.cover %}
-                            <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+                            <img src="/media/{{ book.cover }}" alt="{{ book.title }}">
                         {% else %}
                             <div class="book-cover-placeholder">📖</div>
                         {% endif %}
@@ -37,9 +37,6 @@
     {% else %}
         <div class="empty-state">
             <p>No books available at the moment.</p>
-            {% if user.is_authenticated %}
-                <a href="{% url 'book_add' %}" class="btn btn-primary">Add First Book</a>
-            {% endif %}
         </div>
     {% endif %}
 </div>

@@ -33,8 +33,6 @@
                     {% else %}
                         <button class="btn btn-disabled btn-large" disabled>Not Available</button>
                     {% endif %}
-                    <a href="{% url 'book_edit' book.id %}" class="btn btn-secondary">Edit Book</a>
-                    <a href="{% url 'book_delete' book.id %}" class="btn btn-danger">Delete Book</a>
                 {% else %}
                     <p class="login-prompt">Please <a href="{% url 'login' %}">login</a> to rent this book.</p>
                 {% endif %}

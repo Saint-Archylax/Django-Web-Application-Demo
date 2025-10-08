@@ -1,0 +1,74 @@
+[
+{
+    "model": "rental.book",
+    "pk": 1,
+    "fields": {
+        "title": "Naruto",
+        "author": "Masashi Kishimoto",
+        "isbn": "592305235",
+        "cover": "book_covers/naruto.jpg",
+        "description": "The beginning of Naruto's journey � a young ninja with a dream.",
+        "created_at": "2025-10-08T15:10:09.022Z"
+    }
+},
+{
+    "model": "rental.book",
+    "pk": 2,
+    "fields": {
+        "title": "Bocchi the Rock",
+        "author": "Aki Hamaji",
+        "isbn": "523902520",
+        "cover": "book_covers/bocchi.jpg",
+        "description": "Bocchi is a shy girl who finds her voice through rock music.",
+        "created_at": "2025-10-08T15:10:09.027Z"
+    }
+},
+{
+    "model": "rental.book",
+    "pk": 3,
+    "fields": {
+      "title": "Fullmetal Alchemist",
+      "author": "Hiromu Arakawa",
+      "isbn": "1421541955",
+      "cover": "book_covers/fullmetal.jpg",
+      "description": "Edward and Alphonse Elric begin their alchemical journey after tragedy strikes.",
+      "created_at": "2025-10-08T23:40:00Z"
+    }
+  },
+  {
+    "model": "rental.book",
+    "pk": 4,
+    "fields": {
+      "title": "Attack on Titan",
+      "author": "Hajime Isayama",
+      "isbn": "9781612620244",
+      "cover": "book_covers/aot.jpg",
+      "description": "Humanity fights for survival as colossal Titans threaten their existence.",
+      "created_at": "2025-10-08T23:40:00Z"
+    }
+  },
+  {
+    "model": "rental.book",
+    "pk": 5,
+    "fields": {
+      "title": "Death Note",
+      "author": "Tsugumi Ohba & Takeshi Obata",
+      "isbn": "1421539640",
+      "cover": "book_covers/deathnote.jpg",
+      "description": "Light Yagami discovers a notebook that allows him to kill by writing names.",
+      "created_at": "2025-10-08T23:40:00Z"
+    }
+  },
+  {
+    "model": "rental.book",
+    "pk": 6,
+    "fields": {
+        "title": "Jujutsu Kaisen",
+        "author": "Gege Akutami",
+        "isbn": "9781974710027",
+        "cover": "book_covers/jjk.jpg",
+        "description": "Yuji Itadori joins a secret organization of sorcerers to fight curses and protect humanity.",
+        "created_at": "2025-10-09T00:45:00Z"
+    }
+}
+]
