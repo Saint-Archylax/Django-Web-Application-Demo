@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Book - Book Rental System{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h1>Delete Book</h1>
+        <div class="delete-confirmation">
+            <p>Are you sure you want to delete the following book?</p>
+            <div class="book-to-delete">
+                <h3>{{ book.title }}</h3>
+                <p>by {{ book.author }}</p>
+                <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            </div>
+            <p class="warning">This action cannot be undone. All copies and rental history will be removed.</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <a href="{% url 'book_detail' book.id %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

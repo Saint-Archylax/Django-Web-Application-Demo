@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Book Rental System{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h1>{{ title }}</h1>
+        <form method="post" enctype="multipart/form-data" class="book-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}">Title</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                    <span class="error">{{ form.title.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.author.id_for_label }}">Author</label>
+                {{ form.author }}
+                {% if form.author.errors %}
+                    <span class="error">{{ form.author.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.isbn.id_for_label }}">ISBN</label>
+                {{ form.isbn }}
+                {% if form.isbn.errors %}
+                    <span class="error">{{ form.isbn.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.description.id_for_label }}">Description</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <span class="error">{{ form.description.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.cover.id_for_label }}">Book Cover</label>
+                {{ form.cover }}
+                {% if book and book.cover %}
+                    <div class="current-cover">
+                        <p>Current cover:</p>
+                        <img src="{{ book.cover.url }}" alt="{{ book.title }}" style="max-width: 200px; margin-top: 10px;">
+                    </div>
+                {% endif %}
+                {% if form.cover.errors %}
+                    <span class="error">{{ form.cover.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Book</button>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

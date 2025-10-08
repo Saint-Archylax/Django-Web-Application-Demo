@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}My Rentals - Book Rental System{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>My Rentals</h1>
+        <p>View and manage your rented books</p>
+    </div>
+
+    {% if rental_data %}
+        <div class="rentals-list">
+            {% for data in rental_data %}
+                <div class="rental-card">
+                    <div class="rental-book-cover">
+                        {% if data.book.cover %}
+                            <img src="{{ data.book.cover.url }}" alt="{{ data.book.title }}">
+                        {% else %}
+                            <div class="book-cover-placeholder-small">📖</div>
+                        {% endif %}
+                    </div>
+                    <div class="rental-info">
+                        <h3>{{ data.book.title }}</h3>
+                        <p class="rental-author">by {{ data.book.author }}</p>
+                        <p class="rental-copy">Copy #{{ data.copy_number }}</p>
+                        <p class="rental-date">Rented: {{ data.rental.rented_at|date:"M d, Y" }}</p>
+                        <p class="rental-due">Due: {{ data.rental.due_date|date:"M d, Y" }}</p>
+                        {% if data.rental.returned_at %}
+                            <p class="rental-returned">Returned: {{ data.rental.returned_at|date:"M d, Y" }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="rental-status">
+                        {% if data.rental.status == 1 %}
+                            <span class="status-badge status-active">Active</span>
+                            <a href="{% url 'return_book' data.rental.id %}" class="btn btn-primary btn-small">Return Book</a>
+                        {% else %}
+                            <span class="status-badge status-returned">Returned</span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>You haven't rented any books yet.</p>
+            <a href="{% url 'home' %}" class="btn btn-primary">Browse Books</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

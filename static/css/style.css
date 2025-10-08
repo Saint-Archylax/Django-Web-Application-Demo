@@ -1,0 +1,749 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #1e3a8a;
+    --secondary-blue: #2563eb;
+    --light-blue: #dbeafe;
+    --primary-yellow: #fbbf24;
+    --secondary-yellow: #fcd34d;
+    --dark-yellow: #d97706;
+    --white: #ffffff;
+    --light-gray: #f3f4f6;
+    --medium-gray: #9ca3af;
+    --dark-gray: #374151;
+    --text-dark: #1f2937;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== NAVIGATION BAR ========== */
+.navbar {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-yellow);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-brand a:hover {
+    color: var(--secondary-yellow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.btn-logout {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-logout:hover {
+    background-color: rgba(251, 191, 36, 0.2);
+    color: var(--primary-yellow);
+    cursor: pointer;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    background-color: rgba(251, 191, 36, 0.2);
+    color: var(--primary-yellow);
+}
+
+.btn-logout {
+    background-color: var(--primary-yellow);
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background-color: var(--secondary-yellow);
+    color: var(--primary-blue);
+}
+
+/* ========== CONTAINER ========== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+/* ========== ALERTS ========== */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid var(--success);
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid var(--danger);
+}
+
+.alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-left: 4px solid var(--warning);
+}
+
+.alert-info {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    border-left: 4px solid var(--secondary-blue);
+}
+
+/* ========== PAGE HEADER ========== */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--medium-gray);
+}
+
+/* ========== BOOKS GRID ========== */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.book-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.25);
+    border-color: var(--primary-yellow);
+}
+
+.book-cover {
+    height: 300px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--light-blue) 0%, var(--secondary-blue) 100%);
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-cover-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 6rem;
+    color: var(--primary-yellow);
+}
+
+.book-info {
+    padding: 1.5rem;
+}
+
+.book-info h3 {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.book-author {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-copies {
+    color: var(--dark-yellow);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.book-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-blue);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: var(--primary-yellow);
+    color: var(--primary-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-yellow);
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+    transform: scale(1.05);
+}
+
+.btn-disabled {
+    background-color: var(--medium-gray);
+    color: var(--white);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* ========== BOOK DETAIL PAGE ========== */
+.book-detail {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.15);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.book-detail-cover {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-detail-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.book-cover-placeholder-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    font-size: 10rem;
+    background: linear-gradient(135deg, var(--light-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--primary-yellow);
+}
+
+.book-detail-info h1 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.detail-author {
+    font-size: 1.3rem;
+    color: var(--medium-gray);
+    margin-bottom: 1rem;
+}
+
+.detail-isbn,
+.detail-availability {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.text-success {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.text-danger {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.detail-description {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-yellow);
+}
+
+.detail-description h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.detail-description p {
+    line-height: 1.8;
+    color: var(--dark-gray);
+}
+
+.detail-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.login-prompt {
+    padding: 1rem;
+    background-color: var(--light-blue);
+    border-radius: 8px;
+    color: var(--primary-blue);
+}
+
+.login-prompt a {
+    color: var(--secondary-blue);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* ========== FORMS ========== */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.15);
+}
+
+.form-container h1 {
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.form-input,
+.form-textarea,
+.form-file {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--light-blue);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-yellow);
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error {
+    display: block;
+    color: var(--danger);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.current-cover {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+}
+
+.current-cover p {
+    margin-bottom: 0.5rem;
+    color: var(--medium-gray);
+}
+
+/* ========== DELETE CONFIRMATION ========== */
+.delete-confirmation {
+    text-align: center;
+}
+
+.book-to-delete {
+    background-color: var(--light-gray);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px solid var(--danger);
+}
+
+.book-to-delete h3 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.warning {
+    color: var(--danger);
+    font-weight: 600;
+    margin: 1.5rem 0;
+}
+
+/* ========== RENTALS PAGE ========== */
+.rentals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.rental-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.rental-card:hover {
+    box-shadow: 0 6px 18px rgba(30, 58, 138, 0.25);
+    transform: translateX(5px);
+}
+
+.rental-book-cover {
+    width: 120px;
+    height: 160px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rental-book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-cover-placeholder-small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--light-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--primary-yellow);
+}
+
+.rental-info h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.rental-author {
+    color: var(--medium-gray);
+    margin-bottom: 0.5rem;
+}
+
+.rental-copy,
+.rental-date,
+.rental-due,
+.rental-returned {
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.25rem;
+}
+
+.rental-due {
+    color: var(--dark-yellow);
+    font-weight: 600;
+}
+
+.rental-returned {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.rental-status {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.status-badge {
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background-color: #dbeafe;
+    color: var(--secondary-blue);
+}
+
+.status-returned {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+/* ========== AUTH PAGES ========== */
+.auth-container {
+    max-width: 450px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.15);
+}
+
+.auth-container h1 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-form {
+    margin-top: 1.5rem;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--medium-gray);
+}
+
+.auth-link a {
+    color: var(--secondary-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* ========== EMPTY STATE ========== */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    color: var(--medium-gray);
+    margin-bottom: 2rem;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-detail {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+
+    .rental-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .rental-book-cover {
+        margin: 0 auto;
+    }
+
+    .rental-status {
+        margin-top: 1rem;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .auth-container,
+    .form-container {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+}
