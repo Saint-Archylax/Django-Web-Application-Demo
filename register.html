@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Book Rental System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.html">📚 Book Rental System</a>
+                <a href="index.html"><i class="fas fa-book"></i> Book Rental System</a>
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -23,36 +24,36 @@
     <main class="main-content">
         <div class="container">
             <div class="auth-container">
-                <h1>Register</h1>
+                <h1><i class="fas fa-user-plus"></i> Register</h1>
                 <div id="registerAlert" class="alert alert-success" style="display:none; margin-bottom: 1rem;">
-                    Registration successful! Redirecting to login...
+                    <i class="fas fa-check-circle"></i> Registration successful! Redirecting to login...
                 </div>
                 <form class="auth-form" id="registerForm">
                     <div class="form-group">
-                        <label for="id_username">Username</label>
+                        <label for="id_username"><i class="fas fa-user"></i> Username</label>
                         <input type="text" name="username" id="id_username" class="form-input" placeholder="Enter your username" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="id_email">Email</label>
+                        <label for="id_email"><i class="fas fa-envelope"></i> Email</label>
                         <input type="email" name="email" id="id_email" class="form-input" placeholder="Enter your email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="id_password1">Password</label>
+                        <label for="id_password1"><i class="fas fa-lock"></i> Password</label>
                         <input type="password" name="password1" id="id_password1" class="form-input" placeholder="Enter your password" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="id_password2">Confirm Password</label>
+                        <label for="id_password2"><i class="fas fa-lock"></i> Confirm Password</label>
                         <input type="password" name="password2" id="id_password2" class="form-input" placeholder="Confirm your password" required>
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> Register</button>
                     </div>
                 </form>
-                <p class="auth-link">Already have an account? <a href="login.html">Login here</a></p>
+                <p class="auth-link">Already have an account? <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login here</a></p>
             </div>
         </div>
     </main>

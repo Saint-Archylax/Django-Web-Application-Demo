@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Book Rental System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.html">📚 Book Rental System</a>
+                <a href="index.html"><i class="fas fa-book"></i> Book Rental System</a>
             </div>
             <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
@@ -28,10 +29,10 @@
             </div>
 
             <div class="books-grid">
-                <!-- Book 1 -->
+                <!-- Book 1: The Great Gatsby -->
                 <div class="book-card">
                     <div class="book-cover">
-                        <div class="book-cover-placeholder">📖</div>
+                        <img src="https://covers.openlibrary.org/b/id/7725249-M.jpg" alt="The Great Gatsby">
                     </div>
                     <div class="book-info">
                         <h3>The Great Gatsby</h3>
@@ -44,10 +45,10 @@
                     </div>
                 </div>
 
-                <!-- Book 2 -->
+                <!-- Book 2: To Kill a Mockingbird -->
                 <div class="book-card">
                     <div class="book-cover">
-                        <div class="book-cover-placeholder">📖</div>
+                        <img src="https://covers.openlibrary.org/b/id/8235673-M.jpg" alt="To Kill a Mockingbird">
                     </div>
                     <div class="book-info">
                         <h3>To Kill a Mockingbird</h3>
@@ -60,10 +61,10 @@
                     </div>
                 </div>
 
-                <!-- Book 3 -->
+                <!-- Book 3: 1984 -->
                 <div class="book-card">
                     <div class="book-cover">
-                        <div class="book-cover-placeholder">📖</div>
+                        <img src="https://covers.openlibrary.org/b/id/7878060-M.jpg" alt="1984">
                     </div>
                     <div class="book-info">
                         <h3>1984</h3>
@@ -76,10 +77,10 @@
                     </div>
                 </div>
 
-                <!-- Book 4 -->
+                <!-- Book 4: Pride and Prejudice -->
                 <div class="book-card">
                     <div class="book-cover">
-                        <div class="book-cover-placeholder">📖</div>
+                        <img src="https://covers.openlibrary.org/b/id/8235714-M.jpg" alt="Pride and Prejudice">
                     </div>
                     <div class="book-info">
                         <h3>Pride and Prejudice</h3>
@@ -112,7 +113,7 @@
                 navLinks.innerHTML = `
                     <a href="index.html">Home</a>
                     <a href="rentals.html">My Rentals</a>
-                    <button class="btn btn-logout" onclick="handleLogout()">Logout (${username})</button>
+                    <button class="btn btn-logout" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout (${username})</button>
                 `;
             }
         }

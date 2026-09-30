@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Rentals - Book Rental System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.html">📚 Book Rental System</a>
+                <a href="index.html"><i class="fas fa-book"></i> Book Rental System</a>
             </div>
             <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
@@ -23,13 +24,13 @@
     <main class="main-content">
         <div class="container">
             <div class="page-header">
-                <h1>My Rentals</h1>
+                <h1><i class="fas fa-bookmark"></i> My Rentals</h1>
                 <p>View and manage your rented books</p>
             </div>
 
             <div id="rentalContent">
                 <div class="empty-state">
-                    <p>You haven't rented any books yet.</p>
+                    <p><i class="fas fa-inbox"></i> You haven't rented any books yet.</p>
                     <a href="index.html" class="btn btn-primary">Browse Books</a>
                 </div>
             </div>
@@ -59,7 +60,7 @@
                 navLinks.innerHTML = `
                     <a href="index.html">Home</a>
                     <a href="rentals.html">My Rentals</a>
-                    <button class="btn btn-logout" onclick="handleLogout()">Logout (${username})</button>
+                    <button class="btn btn-logout" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout (${username})</button>
                 `;
             }
             
@@ -74,7 +75,7 @@
             if (rentals.length === 0) {
                 rentalContent.innerHTML = `
                     <div class="empty-state">
-                        <p>You haven't rented any books yet.</p>
+                        <p><i class="fas fa-inbox"></i> You haven't rented any books yet.</p>
                         <a href="index.html" class="btn btn-primary">Browse Books</a>
                     </div>
                 `;
@@ -86,17 +87,17 @@
                 html += `
                     <div class="rental-card">
                         <div class="rental-book-cover">
-                            <div class="book-cover-placeholder-small">📖</div>
+                            <i class="fas fa-book"></i>
                         </div>
                         <div class="rental-info">
                             <h3>${rental.bookTitle}</h3>
-                            <p class="rental-copy">Copy #${index + 1}</p>
-                            <p class="rental-date">Rented: ${rental.rentedAt}</p>
-                            <p class="rental-due">Due: ${rental.dueDate}</p>
+                            <p class="rental-copy"><i class="fas fa-copy"></i> Copy #${index + 1}</p>
+                            <p class="rental-date"><i class="fas fa-calendar"></i> Rented: ${rental.rentedAt}</p>
+                            <p class="rental-due"><i class="fas fa-exclamation-triangle"></i> Due: ${rental.dueDate}</p>
                         </div>
                         <div class="rental-status">
-                            <span class="status-badge status-active">Active</span>
-                            <button class="btn btn-primary btn-small" onclick="returnBook(${index})">Return Book</button>
+                            <span class="status-badge status-active"><i class="fas fa-check"></i> Active</span>
+                            <button class="btn btn-primary btn-small" onclick="returnBook(${index})"><i class="fas fa-undo"></i> Return Book</button>
                         </div>
                     </div>
                 `;

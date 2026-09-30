@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Great Gatsby - Book Rental System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <a href="index.html">📚 Book Rental System</a>
+                <a href="index.html"><i class="fas fa-book"></i> Book Rental System</a>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="login.html">Login</a>
                 <a href="register.html">Register</a>
@@ -24,7 +25,7 @@
         <div class="container">
             <div class="book-detail">
                 <div class="book-detail-cover">
-                    <div class="book-cover-placeholder-large">📖</div>
+                    <img src="https://covers.openlibrary.org/b/id/7725249-M.jpg" alt="The Great Gatsby">
                 </div>
                 <div class="book-detail-info">
                     <h1>The Great Gatsby</h1>
@@ -51,5 +52,30 @@
             <p>&copy; 2025 Book Rental System. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function updateNavbar() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (isLoggedIn && username) {
+                navLinks.innerHTML = `
+                    <a href="index.html">Home</a>
+                    <a href="rentals.html">My Rentals</a>
+                    <button class="btn btn-logout" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout (${username})</button>
+                `;
+            }
+        }
+        
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            alert('Logged out successfully!');
+            window.location.href = 'index.html';
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateNavbar);
+    </script>
 </body>
 </html>
