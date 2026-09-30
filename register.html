@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Book Rental System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">📚 Book Rental System</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="auth-container">
+                <h1>Register</h1>
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="id_username">Username</label>
+                        <input type="text" name="username" id="id_username" class="form-input" placeholder="Enter your username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_email">Email</label>
+                        <input type="email" name="email" id="id_email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_password1">Password</label>
+                        <input type="password" name="password1" id="id_password1" class="form-input" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_password2">Confirm Password</label>
+                        <input type="password" name="password2" id="id_password2" class="form-input" placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </form>
+                <p class="auth-link">Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Book Rental System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

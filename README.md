@@ -1,52 +1,58 @@
-# Python Programming Concepts Using Django
+# Book Rental System - Frontend Static Version
 
-This project demonstrates the implementation of core Python programming concepts through a Django web application. It was developed as the Python component of a comparative study between Python and Ruby, focusing on language structure, data types, control structures, program units, and web application development.
-
-## My Contribution
-
-Developed the Django-based application that demonstrates Python programming concepts and practical web development using the Django framework.
+This is a static HTML/CSS frontend version of the Django Book Rental System, converted for deployment without a backend.
 
 ## Features
 
-* Demonstrates Python data types and variables
-* Implements control structures (if statements, loops, and conditional logic)
-* Uses functions, classes, and modules
-* Showcases object-oriented programming concepts
-* Demonstrates Python's modular architecture using Django apps
-* Interactive web interface built with Django
+- Browse available books
+- View book details
+- Login and registration pages
+- My rentals page
+- Responsive design
+- Mobile-friendly interface
 
-## Topics Covered
+## Files
 
-* Python Processing and Execution
-* Data Types
-* Basic Constructs
-* Control Structures
-* Program Units
-* Language Design Criteria
-* Formal Language Definition
-* Development Environment and IDEs
+- `index.html` - Home page with book catalog
+- `book-detail.html` - Book detail page
+- `login.html` - Login page
+- `register.html` - Registration page
+- `rentals.html` - My rentals page
+- `css/style.css` - Stylesheet
+
+## How to Deploy on GitHub Pages
+
+### Option 1: Using GitHub Pages Settings (Recommended)
+
+1. Go to your repository settings: **Settings → Pages**
+2. Under "Source", select the **`frontend-static`** branch
+3. Set the folder to **`/ (root)`**
+4. Click **Save**
+5. Your site will be live at: `https://saint-archylax.github.io/Django-Web-Application-Demo/`
+
+### Option 2: Using a Different Platform
+
+You can also deploy this to:
+- **Netlify**: Drag and drop the files or connect your GitHub repo
+- **Vercel**: Import your repository
+- **Surge**: `surge` command in terminal
+- **Heroku**: Static site buildpack
+
+## Local Testing
+
+1. Open `index.html` in your web browser
+2. Navigate through the pages using the navigation links
+
+## Notes
+
+- This version uses mock/sample data (books, user interactions)
+- Login and registration forms are static (don't submit anywhere)
+- To add real backend functionality, connect to a Django API or other backend service
+- All styling is responsive and works on mobile, tablet, and desktop
 
 ## Technologies Used
 
-* Python
-* Django
-* HTML
-* CSS
-* SQLite
-* Bootstrap
-
-## Learning Objectives
-
-* Understand Python language fundamentals
-* Apply object-oriented programming concepts
-* Explore Django's Model-View-Template (MVT) architecture
-* Demonstrate practical web application development using Python
-
-## Project Structure
-
-* **models.py** – Data models
-* **views.py** – Application logic
-* **urls.py** – URL routing
-* **templates/** – User interface
-* **static/** – CSS, JavaScript, and assets
-
+- HTML5
+- CSS3
+- Responsive Grid Layout
+- Flexbox
