@@ -12,7 +12,7 @@
             <div class="nav-brand">
                 <a href="index.html">📚 Book Rental System</a>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="login.html">Login</a>
                 <a href="register.html">Register</a>
@@ -39,7 +39,7 @@
                         <p class="book-copies">3 copies available</p>
                         <div class="book-actions">
                             <a href="book-detail.html" class="btn btn-primary">View Details</a>
-                            <a href="login.html" class="btn btn-secondary">Rent Now</a>
+                            <a href="#" class="btn btn-secondary" onclick="handleRentClick(event)">Rent Now</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <p class="book-copies">2 copies available</p>
                         <div class="book-actions">
                             <a href="book-detail.html" class="btn btn-primary">View Details</a>
-                            <a href="login.html" class="btn btn-secondary">Rent Now</a>
+                            <a href="#" class="btn btn-secondary" onclick="handleRentClick(event)">Rent Now</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         <p class="book-copies">1 copy available</p>
                         <div class="book-actions">
                             <a href="book-detail.html" class="btn btn-primary">View Details</a>
-                            <a href="login.html" class="btn btn-secondary">Rent Now</a>
+                            <a href="#" class="btn btn-secondary" onclick="handleRentClick(event)">Rent Now</a>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <p class="book-copies">4 copies available</p>
                         <div class="book-actions">
                             <a href="book-detail.html" class="btn btn-primary">View Details</a>
-                            <a href="login.html" class="btn btn-secondary">Rent Now</a>
+                            <a href="#" class="btn btn-secondary" onclick="handleRentClick(event)">Rent Now</a>
                         </div>
                     </div>
                 </div>
@@ -100,5 +100,55 @@
             <p>&copy; 2025 Book Rental System. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Check if user is logged in and update navbar
+        function updateNavbar() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (isLoggedIn && username) {
+                navLinks.innerHTML = `
+                    <a href="index.html">Home</a>
+                    <a href="rentals.html">My Rentals</a>
+                    <button class="btn btn-logout" onclick="handleLogout()">Logout (${username})</button>
+                `;
+            }
+        }
+        
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            alert('Logged out successfully!');
+            window.location.href = 'index.html';
+        }
+        
+        // Handle rent button click
+        function handleRentClick(e) {
+            e.preventDefault();
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            if (!isLoggedIn) {
+                alert('Please login first to rent a book');
+                window.location.href = 'login.html';
+            } else {
+                alert('Book rented successfully! Check "My Rentals" for details.');
+                // Store rental data
+                const rentals = JSON.parse(localStorage.getItem('rentals') || '[]');
+                rentals.push({
+                    bookTitle: 'Sample Book',
+                    rentedAt: new Date().toLocaleDateString(),
+                    dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+                    status: 'ongoing'
+                });
+                localStorage.setItem('rentals', JSON.stringify(rentals));
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', updateNavbar);
+    </script>
 </body>
 </html>

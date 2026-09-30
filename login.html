@@ -24,7 +24,10 @@
         <div class="container">
             <div class="auth-container">
                 <h1>Login</h1>
-                <form class="auth-form">
+                <div id="loginAlert" class="alert alert-success" style="display:none; margin-bottom: 1rem;">
+                    Login successful! Redirecting...
+                </div>
+                <form class="auth-form" id="loginForm">
                     <div class="form-group">
                         <label for="id_username">Username</label>
                         <input type="text" name="username" id="id_username" class="form-input" placeholder="Enter your username" required>
@@ -49,5 +52,38 @@
             <p>&copy; 2025 Book Rental System. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Simulate user session storage
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('id_username').value;
+            const password = document.getElementById('id_password').value;
+            
+            // Simple validation
+            if (username.length < 3) {
+                alert('Username must be at least 3 characters long');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return;
+            }
+            
+            // Store user session in localStorage
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', username);
+            
+            // Show success message
+            document.getElementById('loginAlert').style.display = 'block';
+            
+            // Redirect to home after 1.5 seconds
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 1500);
+        });
+    </script>
 </body>
 </html>

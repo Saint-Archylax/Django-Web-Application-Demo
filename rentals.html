@@ -12,7 +12,7 @@
             <div class="nav-brand">
                 <a href="index.html">📚 Book Rental System</a>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="login.html">Login</a>
                 <a href="register.html">Register</a>
@@ -27,9 +27,11 @@
                 <p>View and manage your rented books</p>
             </div>
 
-            <div class="empty-state">
-                <p>You haven't rented any books yet.</p>
-                <a href="index.html" class="btn btn-primary">Browse Books</a>
+            <div id="rentalContent">
+                <div class="empty-state">
+                    <p>You haven't rented any books yet.</p>
+                    <a href="index.html" class="btn btn-primary">Browse Books</a>
+                </div>
             </div>
         </div>
     </main>
@@ -39,5 +41,91 @@
             <p>&copy; 2025 Book Rental System. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Check if user is logged in
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (!isLoggedIn) {
+                alert('Please login to view your rentals');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            if (username) {
+                navLinks.innerHTML = `
+                    <a href="index.html">Home</a>
+                    <a href="rentals.html">My Rentals</a>
+                    <button class="btn btn-logout" onclick="handleLogout()">Logout (${username})</button>
+                `;
+            }
+            
+            displayRentals();
+        }
+        
+        // Display rentals
+        function displayRentals() {
+            const rentals = JSON.parse(localStorage.getItem('rentals') || '[]');
+            const rentalContent = document.getElementById('rentalContent');
+            
+            if (rentals.length === 0) {
+                rentalContent.innerHTML = `
+                    <div class="empty-state">
+                        <p>You haven't rented any books yet.</p>
+                        <a href="index.html" class="btn btn-primary">Browse Books</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '<div class="rentals-list">';
+            rentals.forEach((rental, index) => {
+                html += `
+                    <div class="rental-card">
+                        <div class="rental-book-cover">
+                            <div class="book-cover-placeholder-small">📖</div>
+                        </div>
+                        <div class="rental-info">
+                            <h3>${rental.bookTitle}</h3>
+                            <p class="rental-copy">Copy #${index + 1}</p>
+                            <p class="rental-date">Rented: ${rental.rentedAt}</p>
+                            <p class="rental-due">Due: ${rental.dueDate}</p>
+                        </div>
+                        <div class="rental-status">
+                            <span class="status-badge status-active">Active</span>
+                            <button class="btn btn-primary btn-small" onclick="returnBook(${index})">Return Book</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            rentalContent.innerHTML = html;
+        }
+        
+        // Handle book return
+        function returnBook(index) {
+            const rentals = JSON.parse(localStorage.getItem('rentals') || '[]');
+            if (index >= 0 && index < rentals.length) {
+                rentals.splice(index, 1);
+                localStorage.setItem('rentals', JSON.stringify(rentals));
+                alert('Book returned successfully!');
+                displayRentals();
+            }
+        }
+        
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            alert('Logged out successfully!');
+            window.location.href = 'index.html';
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', checkLogin);
+    </script>
 </body>
 </html>
